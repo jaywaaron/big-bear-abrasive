@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BigBear Abrasive
 
-## Getting Started
+Marketing site for BigBear resin bonded grinding discs. Built with Next.js 16 (App Router), TypeScript and Tailwind CSS v4. Deploys to Vercel with no extra configuration.
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build (what Vercel runs)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+| --- | --- |
+| Product range (codes, sizes, grain, RPM) | `lib/products.ts` |
+| Contact details (email, WhatsApp, phone, address) | `lib/site.ts` |
+| Logo | `public/brand/logo-white.png` |
+| Disc photos (cut out from the originals) | `public/products/*.webp` |
+| Favicon / app icon / social share image | `app/icon.png`, `app/apple-icon.png`, `app/opengraph-image.png` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pages: `/` (home), `/products`, `/products/[code]` (one per model, prerendered), `/contact` (quote form).
 
-## Learn More
+## Before launch
 
-To learn more about Next.js, take a look at the following resources:
+1. **Contact details** — fill in `SITE.contact` in `lib/site.ts`. The quote form is switched off until an email or WhatsApp number is set; it then opens the visitor's email app / WhatsApp with the enquiry filled in.
+2. **Site URL** — on Vercel the production URL is picked up automatically. For a custom domain, set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` in the Vercel project's environment variables (used for the sitemap and share links).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy to Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push this repo to GitHub.
+2. In Vercel: **Add New → Project**, import the repo. Framework preset: Next.js (auto-detected). No build settings to change.
+3. Deploy. Later pushes to `main` redeploy automatically.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Or from the terminal: `npx vercel` (preview) and `npx vercel --prod`.
