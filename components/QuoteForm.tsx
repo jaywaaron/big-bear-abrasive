@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { localizeProduct, PRODUCTS } from "@/lib/products";
+import { PRODUCTS, productName } from "@/lib/products";
 import { SITE, whatsappLink } from "@/lib/site";
 import { useLocale } from "@/lib/i18n/context";
 
@@ -30,8 +30,7 @@ export default function QuoteForm({ initialProduct }: { initialProduct?: string 
       return null;
     }
     setError(null);
-    const raw = PRODUCTS.find((p) => p.slug === data.get("product"));
-    const chosen = raw && localizeProduct(raw, locale);
+    const chosen = PRODUCTS.find((p) => p.slug === data.get("product"));
     const c = dict.quoteForm.compose;
     const lines = [
       c.title,
@@ -39,7 +38,7 @@ export default function QuoteForm({ initialProduct }: { initialProduct?: string 
       `${c.name}: ${name}`,
       data.get("company") ? `${c.company}: ${data.get("company")}` : null,
       `${c.replyTo}: ${reply}`,
-      `${c.disc}: ${chosen ? `${chosen.code} — ${chosen.name}` : dict.quoteForm.notSure}`,
+      `${c.disc}: ${chosen ? `${chosen.code} — ${productName(chosen, locale)}` : dict.quoteForm.notSure}`,
       data.get("qty") ? `${c.quantity}: ${data.get("qty")}` : null,
       "",
       String(data.get("message") ?? "").trim() || null,
@@ -92,14 +91,11 @@ export default function QuoteForm({ initialProduct }: { initialProduct?: string 
           <label htmlFor="q-product" className={label}>{dict.quoteForm.disc}</label>
           <select id="q-product" name="product" className="input cursor-pointer" value={product} onChange={(e) => setProduct(e.target.value)}>
             <option value="">{dict.quoteForm.notSure}</option>
-            {PRODUCTS.map((raw) => {
-              const p = localizeProduct(raw, locale);
-              return (
-                <option key={p.slug} value={p.slug}>
-                  {p.code} — {p.name}
-                </option>
-              );
-            })}
+            {PRODUCTS.map((p) => (
+              <option key={p.slug} value={p.slug}>
+                {p.code} — {productName(p, locale)}
+              </option>
+            ))}
           </select>
         </div>
         <div>

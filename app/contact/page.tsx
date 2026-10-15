@@ -13,7 +13,7 @@ export default async function ContactPage(props: PageProps<"/contact">) {
   const { product } = await props.searchParams;
   const dict = getDictionary(await getLocale());
   const { email, phone, address } = SITE.contact;
-  const wa = whatsappLink("Hi BigBear, I'd like to ask about your grinding discs.");
+  const wa = whatsappLink("Hi BigBear, I'd like to ask about your discs.");
   const hasDetails = email || phone || wa || address;
 
   return (

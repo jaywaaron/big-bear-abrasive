@@ -22,14 +22,14 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — Resin Bonded Grinding Discs`,
+    default: `${SITE.name} — Grinding Discs & Cut-Off Wheels`,
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
   openGraph: {
     type: "website",
     siteName: SITE.name,
-    title: `${SITE.name} — Resin Bonded Grinding Discs`,
+    title: `${SITE.name} — Grinding Discs & Cut-Off Wheels`,
     description: SITE.description,
   },
 };

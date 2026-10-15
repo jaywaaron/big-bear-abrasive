@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ProductBrowser from "@/components/ProductBrowser";
-import { PRODUCTS, formatRpm, localizeProduct, sizeLabel } from "@/lib/products";
+import { PRODUCTS, applicationLine, formatRpm, productName, sizeLabel } from "@/lib/products";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -42,35 +42,32 @@ export default async function ProductsPage() {
                 <tr>
                   <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.model}</th>
                   <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.size}</th>
-                  <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.grain}</th>
                   <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.maxRpm}</th>
-                  <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.bestFor}</th>
+                  <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.certification}</th>
+                  <th className="px-4 py-3 font-semibold">{dict.products.listing.headers.use}</th>
                 </tr>
               </thead>
               <tbody className="divide-seam divide-y">
-                {PRODUCTS.map((raw) => {
-                  const p = localizeProduct(raw, locale);
-                  return (
-                    <tr key={p.slug} className="hover:bg-iron/60">
-                      <td className="px-4 py-3">
-                        <Link href={`/products/${p.slug}`} className="group">
-                          <span className="font-display text-spark font-semibold tracking-wider group-hover:underline">{p.code}</span>
-                          <span className="text-bone/80 block">{p.name}</span>
-                        </Link>
-                      </td>
-                      <td className="px-4 py-3 tabular-nums">
-                        {sizeLabel(p).replace(" mm", "")}
-                        {p.shapeNote && <span className="text-ash block text-xs">{p.shapeNote}</span>}
-                      </td>
-                      <td className="px-4 py-3">{p.grain}</td>
-                      <td className="px-4 py-3 font-semibold tabular-nums">
-                        {formatRpm(p.maxRpm, locale)}
-                        <span className="text-ash block text-xs font-normal">{p.maxSpeed} m/s</span>
-                      </td>
-                      <td className="text-bone/80 px-4 py-3">{p.bestFor.join(", ")}</td>
-                    </tr>
-                  );
-                })}
+                {PRODUCTS.map((p) => (
+                  <tr key={p.slug} className="hover:bg-iron/60">
+                    <td className="px-4 py-3">
+                      <Link href={`/products/${p.slug}`} className="group">
+                        <span className="font-display text-spark font-semibold tracking-wider group-hover:underline">{p.code}</span>
+                        <span className="text-bone/80 block">{productName(p, locale)}</span>
+                      </Link>
+                    </td>
+                    <td className="px-4 py-3 tabular-nums">{sizeLabel(p).replace(" mm", "")}</td>
+                    <td className="px-4 py-3 font-semibold tabular-nums">
+                      {formatRpm(p.maxRpm, locale)}
+                      <span className="text-ash block text-xs font-normal">{p.maxSpeed} m/s</span>
+                    </td>
+                    <td className="px-4 py-3">
+                      {p.certification}
+                      {p.productionLicense && <span className="text-ash block text-xs">{p.productionLicense}</span>}
+                    </td>
+                    <td className="text-bone/80 px-4 py-3">{applicationLine(p.type, locale)}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

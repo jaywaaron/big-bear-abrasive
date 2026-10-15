@@ -15,7 +15,6 @@ export default function Header() {
   const NAV = [
     { href: "/", label: dict.nav.home },
     { href: "/products", label: dict.nav.products },
-    { href: "/#grain-guide", label: dict.nav.grainGuide },
     { href: "/contact", label: dict.nav.contact },
   ];
 

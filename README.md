@@ -1,6 +1,6 @@
 # BigBear Abrasive
 
-Marketing site for BigBear resin bonded grinding discs. Built with Next.js 16 (App Router), TypeScript and Tailwind CSS v4. Deploys to Vercel with no extra configuration.
+Marketing site for BigBear resin bonded grinding discs, flexible discs and cut-off wheels. Built with Next.js 16 (App Router), TypeScript and Tailwind CSS v4. Deploys to Vercel with no extra configuration.
 
 ## Run locally
 
@@ -14,7 +14,7 @@ npm run build    # production build (what Vercel runs)
 
 | What | Where |
 | --- | --- |
-| Product range (codes, sizes, grain, RPM) | `lib/products.ts` |
+| Product range (everything printed on each disc label) | `lib/products.ts` |
 | Contact details (email, WhatsApp, phone, address) | `lib/site.ts` |
 | Logo | `public/brand/logo-white.png` |
 | Disc photos (cut out from the originals) | `public/products/*.webp` |

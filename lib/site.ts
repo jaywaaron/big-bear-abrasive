@@ -7,7 +7,7 @@ export const SITE = {
   name: "BigBear Abrasive",
   tagline: "Resin Bonded Abrasive",
   description:
-    "BigBear resin bonded grinding discs from 4 to 9 inches, rated to 80 m/s. Standard, fine, inox, stone and Type 29 discs for steel, stainless, concrete and cast iron.",
+    "BigBear resin bonded grinding discs, flexible discs and cut-off wheels for metal and stainless steel, from 100 to 350 mm, rated to 80 m/s.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL

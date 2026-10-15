@@ -19,7 +19,7 @@ const SPARKS = [
 ];
 
 /**
- * The real BigBear 4" grinding disc, turning slowly (counter-clockwise, so
+ * The real BigBear 100 mm grinding disc (A/F24Q4BF), turning slowly (counter-clockwise, so
  * the bottom edge moves right and throws sparks away from the headline).
  */
 export default function HeroDisc() {
@@ -30,7 +30,7 @@ export default function HeroDisc() {
       <div className="animate-spin-slow absolute inset-0 [animation-direction:reverse]">
         <Image
           src="/products/disc-grinding.webp"
-          alt="BigBear 4-inch resin bonded grinding disc for metal and stainless steel"
+          alt="BigBear 100 mm resin bonded grinding disc for metal and stainless steel"
           fill
           preload
           sizes="(max-width: 1024px) 90vw, 560px"
