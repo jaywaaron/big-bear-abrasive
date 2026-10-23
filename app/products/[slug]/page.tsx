@@ -105,7 +105,7 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
               </dl>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href={`/contact?product=${p.slug}`} className="btn btn-spark">
+                <Link href="/contact" className="btn btn-spark">
                   {dict.products.detail.requestQuote}
                 </Link>
                 {wa && (

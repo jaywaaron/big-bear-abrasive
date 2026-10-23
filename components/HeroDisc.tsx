@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 
 // Fixed spark set (no Math.random) so server and client render the same.
 // a = throw angle in degrees (0 = right, 90 = down), d = distance, t = duration.
-const SPARKS = [
+export const SPARKS = [
   { a: 8, d: 170, t: 0.9, delay: 0 },
   { a: 18, d: 210, t: 1.1, delay: 0.25 },
   { a: 26, d: 140, t: 0.8, delay: 0.5 },

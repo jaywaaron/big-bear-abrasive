@@ -110,3 +110,15 @@ body {
     display: none;
   }
 }
+
+
+/* Hollow display type for big background words. */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-seam);
+}
+
+/* Hazard stripes, in the label band's orange-red. */
+.hazard {
+  background-image: repeating-linear-gradient(-45deg, var(--color-spark) 0 14px, var(--color-coal) 14px 28px);
+}

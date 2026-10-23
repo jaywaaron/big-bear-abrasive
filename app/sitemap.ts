@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE.url, priority: 1 },
     { url: `${SITE.url}/products`, priority: 0.9 },
     ...PRODUCTS.map((p) => ({ url: `${SITE.url}/products/${p.slug}`, priority: 0.8 })),
+    { url: `${SITE.url}/about`, priority: 0.5 },
     { url: `${SITE.url}/contact`, priority: 0.6 },
   ];
 }
